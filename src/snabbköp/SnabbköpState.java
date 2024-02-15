@@ -37,7 +37,7 @@ public class SnabbköpState extends SimState{
 		this.betalningsTid = tC.calculateBetalnings(this.getTime());
 	}
 	
-	public int getAntalKunderSomHandlat() { return antalKunderSomHandlat; }
+	public int getAntalKunderSomHandlat() { return this.antalKunderSomHandlat; }
 	public int getAntalKunderSomKöat() { return this.antalKunderSomKöat; }
 	public int getKassaKöLängd() { return this.kassaKöLängd; }
 	public int getMaxKassor() { return this.maxKassor; }
@@ -61,6 +61,9 @@ public class SnabbköpState extends SimState{
 	public boolean isSnabbköpÖppet() { return snabbköpÖppet; }
 	public KassaKöFIFO getKassaKöFIFO() { return kassaKöFIFO; }
 	public Event getCurrentEvent() { return this.currentEvent; }
+
+	public void ökaAntalKunderSomKöat() { this.antalKunderSomKöat++; }
+
 	public void setKundID(int i) { this.kundID = i; }
 
 	public void setSnabbköpÖppet(boolean a) { this.snabbköpÖppet = a; }
@@ -74,7 +77,7 @@ public class SnabbköpState extends SimState{
 	public void minskaAntalKunderIButik() { this.antalKunderIButik -= 1; }
 	public void ökaAntalLedigaKassor() { this.antalLedigaKassor += 1; }
 	public void ökaAntalKunderSomHandlat() { this.antalKunderSomHandlat += 1; }
-	public void minskaAntalLedigaKassor() { this.antalLedigaKassor -= 1;	}
+	public void minskaAntalLedigaKassor() { if (this.antalLedigaKassor == 0) {this.antalLedigaKassor = 0;} else { this.antalLedigaKassor -= 1; }	}
 	public void ökaSummaKöTid() { this.summaKöTid += 1; }
 	public void ökaAntalKunderIButik() { this.antalKunderIButik += 1; }
 	public void ökaTotalAntalKunder() { this.totalAntalKunder += 1; }		
