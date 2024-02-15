@@ -1,7 +1,9 @@
 package snabbköp;
+import generellSim.Event;
 import generellSim.EventQueue;
 import snabbköp.kunder.*;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class KassaKöFIFO extends LinkedList<Integer>{
 
@@ -23,10 +25,14 @@ public class KassaKöFIFO extends LinkedList<Integer>{
 	}
 
 	public void ordnaKö() {
-		if (state.getAntalLedigaKassor() < 0 && !this.isEmpty()) {
-			System.out.println("Finaly empty");
-			this.remove(0);
-			state.minskaAntalLedigaKassor();
+		if (!this.isEmpty() && state.getAntalLedigaKassor() >= 0) {
+			for (Event e: eQ) {
+				if (e instanceof Betalning) {
+					e.createEvent();
+					eQ.remove(e);
+					this.remove(0);
+				}
+			}
 		}
 	}
 }

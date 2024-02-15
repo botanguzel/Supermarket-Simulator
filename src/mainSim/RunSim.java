@@ -18,7 +18,7 @@ public class RunSim {
 	public RunSim(double startTid, double stopTid, double closeTid, double lambda, double kMin,
 			double kMax, double pMin, double pMax, long seed, int maxKunder, int maxKassor) {
 		this.eQ = new EventQueue();
-		this.state = new SnabbköpState(maxKunder, maxKassor, 2, lambda, seed, kMin, kMax, pMin, pMax);
+		this.state = new SnabbköpState(maxKunder, maxKassor, 1, lambda, seed, kMin, kMax, pMin, pMax);
 		sim = new Sim(eQ, state, state);
 		SnabbköpView view = new SnabbköpView(state, eQ);
 		KassaKöFIFO kkF = new KassaKöFIFO(state, eQ);

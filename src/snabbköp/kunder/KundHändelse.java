@@ -17,6 +17,6 @@ public abstract class KundHändelse extends Event {
 
 	@Override
 	public abstract String getName();
-	public Kund getKund() { return this.kund; }
+	public abstract Kund getKund();
 
 }

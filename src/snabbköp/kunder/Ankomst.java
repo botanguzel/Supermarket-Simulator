@@ -30,4 +30,6 @@ public class Ankomst extends KundHändelse {
 	public String getName() { return "Ankomst"; }
 
 	public void createEvent(int i, int j, int kundID){}
+
+	public Kund getKund() { return this.kund;}
 }

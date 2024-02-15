@@ -3,6 +3,7 @@ package snabbköp;
 import generellSim.Event;
 import generellSim.SimState;
 import snabbköp.Time.TimeCalculations;
+import snabbköp.kunder.KundHändelse;
 
 public class SnabbköpState extends SimState{
 	
@@ -60,10 +61,13 @@ public class SnabbköpState extends SimState{
 	public boolean isSnabbköpÖppet() { return snabbköpÖppet; }
 	public KassaKöFIFO getKassaKöFIFO() { return kassaKöFIFO; }
 	public Event getCurrentEvent() { return this.currentEvent; }
-	
-	public void setSnabbköpÖppet(boolean a) { this.snabbköpÖppet = a; }
-	public void setCurrentEvent(Event e) { this.currentEvent = e; }
 	public void setKundID(int i) { this.kundID = i; }
+
+	public void setSnabbköpÖppet(boolean a) { this.snabbköpÖppet = a; }
+	public void setCurrentEvent(Event e) {
+		this.currentEvent = e;
+		if (e instanceof KundHändelse) { this.setKundID(((KundHändelse) e).getKund().getKundID()); };
+	}
 	public void setKassaKöFIFO(KassaKöFIFO k) { this.kassaKöFIFO = k; }
 	
 	public void läggMissadKund() {this.antalMissadeKunder += 1; }

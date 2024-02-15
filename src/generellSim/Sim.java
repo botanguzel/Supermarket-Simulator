@@ -19,13 +19,14 @@ public class Sim {
 	public void körHändelser() {
 		//skV.update(ss, eQ);
 		while(ss.getIo() && !this.eQ.isEmpty()) {
+			System.out.println(sss.getAntalLedigaKassor());
 			//for (int i = 0; i < eQ.size(); i++) {System.out.println(eQ.get(i).getName());}
 			eQ.get(0).createEvent();
 			sss.setTime(eQ.get(0).händelseTid());
 			eQ.remove(0);
 			//System.out.println(eQ);
 			skV.update(sss, eQ);
-			if (sss.getAntalKunderIButik() == 5) { sss.setSnabbköpÖppet(false); break;}
+			if (sss.getTotalAntalKunder() == 5) { sss.setSnabbköpÖppet(false); break;}
 		}
 	}
 }

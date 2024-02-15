@@ -23,5 +23,6 @@ public class Plock extends KundHändelse{
 	}	
 	
 	public String getName() { return "Plock"; }
+	public Kund getKund() { return this.kund; }
 	
 }
