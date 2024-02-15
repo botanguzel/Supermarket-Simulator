@@ -23,7 +23,7 @@ public class KassaKöFIFO extends LinkedList<Integer>{
 	}
 
 	public void ordnaKö() {
-		if (state.getAntalLedigaKassor() < 0) {
+		if (state.getAntalLedigaKassor() < 0 && !this.isEmpty()) {
 			System.out.println("Finaly empty");
 			this.remove(0);
 			state.minskaAntalLedigaKassor();

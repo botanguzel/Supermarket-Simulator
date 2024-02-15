@@ -11,7 +11,7 @@ public class Betalning extends KundHändelse{
 	
 	@Override
 	public void createEvent() {
-		if (state.getAntalLedigaKassor() > 0) {
+		if (state.getAntalLedigaKassor() >=0) {
 			state.minskaAntalLedigaKassor();
 			state.setCurrentEvent(this);
 			state.minskaAntalKunderIButik();
