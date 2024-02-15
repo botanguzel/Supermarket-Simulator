@@ -11,26 +11,25 @@ public class Betalning extends KundHändelse{
 	
 	@Override
 	public void createEvent() {
-		System.out.println(eQ);
 		if (state.getAntalLedigaKassor() >=0) {
-			System.out.println("Empty REgister Found");
+			//System.out.println("Empty REgister Found");
 			if (!state.getKassaKöFIFO().isEmpty()) {
-				System.out.println("People in LINE");
-				//state.getKassaKöFIFO().ordnaKö();
+				//System.out.println("People in LINE");
+				state.getKassaKöFIFO().ordnaKö();
 			} else {
-				System.out.println("NOONE IS IN LINE");
+				//System.out.println("NOONE IS IN LINE");
 				state.minskaAntalLedigaKassor();
 				state.setCurrentEvent(this);
 				state.minskaAntalKunderIButik();
 				state.ökaAntalKunderSomHandlat();
 			}
-			//state.setCurrentEvent(this);
-			state.ökaAntalLedigaKassor();
 		} else {
-			System.out.println("Empty REgister NOT Found");
-			eQ.set(1, this);
+			//System.out.println("Empty NOT Found");
+			if (!eQ.isEmpty()) { eQ.addEvent(this); }
+			else { eQ.set(0, this); }
 
 		}
+		state.ökaAntalLedigaKassor();
 	}
 
 
