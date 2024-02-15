@@ -25,12 +25,13 @@ public class KassaKöFIFO extends LinkedList<Integer>{
 	}
 
 	public void ordnaKö() {
-		if (!this.isEmpty() && state.getAntalLedigaKassor() >= 0) {
+		if (!this.isEmpty() && state.getAntalLedigaKassor() > 0) {
 			for (Event e: eQ) {
 				if (e instanceof Betalning) {
 					e.createEvent();
 					eQ.remove(e);
-					this.remove(0);
+					this.remove(((Betalning) e).getKund());
+
 				}
 			}
 		}
