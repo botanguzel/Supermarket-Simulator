@@ -45,6 +45,9 @@ public class SnabbköpView extends SimView{
 	}
 	
 	public void Resultat() {
+		eQ.clear(); //Work-around
+		state.ökaAntalKunderSomKöat();
+		double x = state.getAntalKunderSomKöat();
 		System.out.println(String.format(
 				"""
 				%.2f Stop
@@ -54,11 +57,11 @@ public class SnabbköpView extends SimView{
 				
 				1) Av %s kunder handlade %s medan %s missades.
 				
-				2) Total tid %s kassor varit ledig: %.2f te.
-				   Genomsnittlig ledig kassatid: %.2f te (dvs 36.04% av tiden från öppning tills sista kunden betalat).
+				2) Total tid %s kassor varit ledig: %s te.
+				   Genomsnittlig ledig kassatid: %s te (dvs %.2f av tiden från öppning tills sista kunden betalat).
 				   
-				3) Total tid %s kunder tvingats köa: %.2f te.
-				   Genomsnittlig kötid: %.2f te.
+				3) Total tid %s kunder tvingats köa: %s te.
+				   Genomsnittlig kötid: %s te.
 				""",
 				state.getTime(),
 				state.getTotalAntalKunder(),
@@ -70,7 +73,8 @@ public class SnabbköpView extends SimView{
 				state.getSummaTidLedigaKassor() / state.getMaxKassor() / state.getTime() * 100,
 				state.getAntalKunderSomKöat(),
 				state.getSummaKöTid(),
-				state.getSummaKöTid() / state.getAntalKunderSomKöat()));
+				x
+		));
 	}
 	
 	@Override
