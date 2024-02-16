@@ -20,7 +20,7 @@ public class SnabbköpView extends SimView{
 	public void printUtRun(Observable o, Object e) {
 		System.out.println(String.format(
 				"""
-				PARAMETRAR
+    			PARAMETRAR
 				==========
 				Antal kassor, N..........: %s
 				Max som ryms, M..........: %s
@@ -30,8 +30,7 @@ public class SnabbköpView extends SimView{
 				Frö, f...................: %s
 				FÖRLOPP
 				=======
-				\tTid \tHändelse \tKund \t? \tled \tledT \tI \t$ \t:-( \tköat \tköT \tköar \t[Kassakö..]
-				%.2f %s""",
+				%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s""",
 				state.getAntalLedigaKassor(),
 				state.getMaxKunder(),
 				state.getLambda(),
@@ -40,17 +39,74 @@ public class SnabbköpView extends SimView{
 				state.getKMin(),
 				state.getKMax(),
 				state.getSeed(),
-				state.getTime(),
-				state.getCurrentEvent().getName()));
+				"Tid",
+				"Händelse",
+				"Kund",
+				"?",
+				"led",
+				"ledT",
+				"I",
+				"$",
+				":-(",
+				"köat",
+				"köT",
+				"köar",
+				"[Kassakö..]"
+		));
+				//state.getTime(),
+				//state.getCurrentEvent().getName()));
 	}
+
 	
+	@Override
+	public void update(Observable o, Object e) {
+		if (state.getCurrentEvent() instanceof Run) {
+			printUtRun(o ,e);
+			System.out.println(String.format(
+					"%-10.2f\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s",
+					state.getTime(),
+					state.getCurrentEvent().getName(),
+					state.getKundID(),
+					state.isSnabbköpÖppet() ? "Ö" : "S",
+					state.getAntalLedigaKassor(),
+					state.getSummaTidLedigaKassor(),
+					state.getAntalKunderIButik(),
+					state.getAntalKunderSomHandlat(),
+					state.getAntalMissadeKunder(),
+					state.getAntalKunderSomKöat(),
+					state.getSummaKöTid(),
+					state.getKassaKöLängd(),
+					state.getKassaKöFIFO()
+			));
+		}
+		else if (state.getCurrentEvent() instanceof Stop) { Resultat(); }
+		else {
+			System.out.println(String.format(
+					"%-10.2f\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s",
+					state.getTime(),
+					state.getCurrentEvent().getName(),
+					state.getKundID(),
+					state.isSnabbköpÖppet() ? "Ö" : "S",
+					state.getAntalLedigaKassor(),
+					state.getSummaTidLedigaKassor(),
+					state.getAntalKunderIButik(),
+					state.getAntalKunderSomHandlat(),
+					state.getAntalMissadeKunder(),
+					state.getAntalKunderSomKöat(),
+					state.getSummaKöTid(),
+					state.getKassaKöLängd(),
+					state.getKassaKöFIFO()
+			));
+		}
+	}
+
 	public void Resultat() {
 		eQ.clear(); //Work-around
 		state.ökaAntalKunderSomKöat();
 		double x = state.getAntalKunderSomKöat();
 		System.out.println(String.format(
 				"""
-				%.2f Stop
+				%-10.2f\t%-10s
 				
 				Resultat
 				========
@@ -64,6 +120,7 @@ public class SnabbköpView extends SimView{
 				   Genomsnittlig kötid: %s te.
 				""",
 				state.getTime(),
+				"Stop",
 				state.getTotalAntalKunder(),
 				state.getAntalKunderSomHandlat(),
 				state.getAntalMissadeKunder(),
@@ -75,28 +132,5 @@ public class SnabbköpView extends SimView{
 				state.getSummaKöTid(),
 				x
 		));
-	}
-	
-	@Override
-	public void update(Observable o, Object e) {
-		if (state.getCurrentEvent() instanceof Run) { printUtRun(o ,e); }	
-		else if (state.getCurrentEvent() instanceof Stop) { Resultat(); }
-		else {
-			System.out.println(String.format(
-					"\t%.2f \t%s \t%s \t%s \t%s \t%s \t%s \t%s \t%s \t%s \t%s \t%s \t%s",
-					state.getTime(),
-					state.getCurrentEvent().getName(),
-					state.getKundID(),
-					state.isSnabbköpÖppet() ? "Ö" : "S",
-					state.getAntalLedigaKassor(),
-					state.getSummaTidLedigaKassor(),
-					state.getAntalKunderIButik(),
-					state.getAntalKunderSomHandlat(),
-					state.getAntalMissadeKunder(),
-					state.getAntalKunderSomKöat(),
-					state.getSummaKöTid(),
-					state.getKassaKöLängd(),
-					state.getKassaKöFIFO()));
-		}
 	}
 }
