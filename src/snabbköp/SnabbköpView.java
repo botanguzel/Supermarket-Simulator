@@ -20,7 +20,7 @@ public class SnabbköpView extends SimView{
 	public void printUtRun(Observable o, Object e) {
 		System.out.println(String.format(
 				"""
-    			PARAMETRAR
+				PARAMETRAR
 				==========
 				Antal kassor, N..........: %s
 				Max som ryms, M..........: %s
@@ -107,15 +107,12 @@ public class SnabbköpView extends SimView{
 		System.out.println(String.format(
 				"""
 				%-10.2f\t%-10s
-				
+				========
 				Resultat
 				========
-				
 				1) Av %s kunder handlade %s medan %s missades.
-				
 				2) Total tid %s kassor varit ledig: %s te.
 				   Genomsnittlig ledig kassatid: %s te (dvs %.2f av tiden från öppning tills sista kunden betalat).
-				   
 				3) Total tid %s kunder tvingats köa: %s te.
 				   Genomsnittlig kötid: %s te.
 				""",
