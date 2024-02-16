@@ -21,7 +21,7 @@ public class Ankomst extends KundHändelse {
 				state.ökaAntalKunderIButik();
 				state.ökaTotalAntalKunder();
 			} else state.läggMissadKund();
-		}
+		} else state.läggMissadKund();
 		Kund nKund = new Kund();
 		eQ.addEvent(new Ankomst(state, eQ, state.getAnkomstTid(), nKund));
 		this.setEventState(true);
