@@ -11,6 +11,7 @@ public class Plock extends KundHändelse{
 	@Override
 	public void createEvent() {
 		state.setCurrentEvent(this);
+		state.setKundID(this.getKund().getKundID());
 		if (state.getAntalLedigaKassor() > 0) {
 			eQ.addEvent(new Betalning(state, eQ, state.getBetalningsTid(), kund));
 			state.minskaAntalLedigaKassor();

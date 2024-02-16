@@ -1,7 +1,9 @@
 package generellSim;
 
 import snabbköp.*;
+import snabbköp.kunder.Ankomst;
 import snabbköp.kunder.Betalning;
+import snabbköp.kunder.Kund;
 import snabbköp.kunder.KundHändelse;
 
 public class Sim {
@@ -30,9 +32,9 @@ public class Sim {
 			//System.out.println(eQ);
 			if (sss.getTotalAntalKunder() == 6) { sss.setSnabbköpÖppet(false); }
 			if (eQContainsBetalning() && !sss.isSnabbköpÖppet()) {
-				System.out.println(eQ);
-				Stop stop = new Stop(sss, eQ, sss.getTime());
-				eQ.add(1, stop);
+				//System.out.println(eQ);
+				Stop stop = new Stop(sss, ss, eQ, sss.getTime());
+				eQ.add(stop);
 			}
 			skV.update(sss, eQ);
 		}

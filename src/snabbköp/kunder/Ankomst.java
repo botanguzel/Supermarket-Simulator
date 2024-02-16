@@ -15,21 +15,20 @@ public class Ankomst extends KundHändelse {
 		state.setKundID(this.getKund().getKundID());
 		state.setCurrentEvent(this);
 		state.setTime(tid);
-		if (state.isSnabbköpÖppet()) {
-			if (state.getAntalKunderIButik() < state.getMaxKunder()) {
-				eQ.addEvent(new Plock(state, eQ, state.getPlockTid(), kund));
-				state.ökaAntalKunderIButik();
-				state.ökaTotalAntalKunder();
-			} else state.läggMissadKund();
-		} else state.läggMissadKund();
+		if (state.isSnabbköpÖppet() && state.getAntalKunderIButik() < state.getMaxKunder()) {
+			eQ.addEvent(new Plock(state, eQ, state.getPlockTid(), kund));
+			state.ökaAntalKunderIButik();
+			state.ökaTotalAntalKunder();
+		} else {
+			state.läggMissadKund();
+			state.ökaTotalAntalKunder();
+		}
 		Kund nKund = new Kund();
 		eQ.addEvent(new Ankomst(state, eQ, state.getAnkomstTid(), nKund));
 		this.setEventState(true);
 	}
 	@Override
 	public String getName() { return "Ankomst"; }
-
-	public void createEvent(int i, int j, int kundID){}
 
 	public Kund getKund() { return this.kund;}
 }

@@ -101,7 +101,6 @@ public class SnabbköpView extends SimView{
 	}
 
 	public void Resultat() {
-		eQ.clear(); //Work-around
 		state.ökaAntalKunderSomKöat();
 		double x = state.getAntalKunderSomKöat();
 		System.out.println(String.format(

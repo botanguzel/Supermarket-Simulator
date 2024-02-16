@@ -33,9 +33,9 @@ public class RunSim {
 		state.setCurrentEvent(run);
 		sim.körHändelser();
 
-		Stop close = new Stop(state, eQ, closeTid);
-		eQ.add(0,close);
-		eQ.get(0).createEvent();
+		//Stop close = new Stop(state, eQ, closeTid);
+		//eQ.add(0,close);
+		//eQ.get(0).createEvent();
 	}
 	
 	public SnabbköpState getState() { return this.state; }
