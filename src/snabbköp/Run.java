@@ -15,7 +15,6 @@ public class Run extends Event {
 
 	@Override
 	public void createEvent() {
-		System.out.println("RUN CREATE EVENT");
 		state.setCurrentEvent(this);
 		eQ.addEvent(new Ankomst(state, eQ, state.getAnkomstTid(), this.kund));
 		this.setEventState(true);
