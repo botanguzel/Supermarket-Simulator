@@ -1,19 +1,51 @@
-# Supermarket-Simulator Current State
-### Finally the [`Betalning.java`](https://github.com/botanguzel/Supermarket-Simulator/blob/main/src/snabbk%C3%B6p/kunder/Betalning.java) works correct.
-# Planned updates
-<p>Currently new Ankomst event is being instantiated inside the Ankomst event, it needs to be done outside to prevent certain order (Ankomst, Plock, (New)Ankomst, Betalning...).
-Moving it to KörHändelser function and randomizing the new events time will probably fix this issue.</p>
+# Supermarket-Simulator
+This java-program simulates a supermarket and a simulator that are seperate from eachother to calculate the best amount of cash registers given different inputs such as,
+amount of max cash registers, max customers that can be in simultaneously, arrival speed and so on..
 
-<hr>
+## Installation
 
-# Current Problems
-### Somehow all the customers manages to pay without standing in line, even if the available cash register is set to 1 at the start. Most likely the wrong instantiation of new Ankomst even causes this problem.
-### The Ankomst even never runs the lines 23 and 24, so missed customers stays 0 always.
-### The `Stop` Event is instantiated with <u>wrong</u>  time, however it still works but as the image shows there is huge difference in time between the last event and the `Stop` event.
-### `SnabbköpView.Resultat` includes the line `eQ.clear()`, as currently there is no other way of knowing when does the last `Betalning` event of the last customer is finished to remove the rest of the events and stop the simulation.
+1. **Downloading the Repository**:
+   - Clone the repository to your local machine using HTTPS:
+     ```bash
+     git clone https://github.com/your-username/your-repository.git
+     ```
+     Or, if you prefer using SSH:
+     ```bash
+     git clone git@github.com:your-username/your-repository.git
+     ```
 
-<hr>
+2. **Building the Project (if necessary)**:
+   - Navigate to the project directory:
+     ```bash
+     cd your-repository
+     ```
+   - Build the project (if necessary):
+     - If your project uses a build tool like Maven:
+       ```bash
+       mvn clean install
+       ```
+     - If your project uses Gradle:
+       ```bash
+       gradle build
+       ```
 
-Latest output
-![img_2.png](img_2.png)
-<hr>
+3. **Running the Project**:
+   - Run the Java file or application:
+     - If your project contains a main Java file that can be executed directly:
+       ```bash
+       java -cp target/classes com.example.Main
+       ```
+     - If your project is an application with a specific entry point or script:
+       ```bash
+       ./run.sh
+       ```
+     Replace `com.example.Main` and `run.sh` with the appropriate entry points for your project.
+
+## Example
+
+```bash
+git clone https://github.com/your-username/your-repository.git
+cd your-repository
+mvn clean install
+java -cp target/classes com.example.Main
+
