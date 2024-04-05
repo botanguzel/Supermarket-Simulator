@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"generellSim"},{"l":"mainSim"},{"l":"randomNum"},{"l":"snabbköp"},{"l":"snabbköp.händelser"}];updateSearchResults();

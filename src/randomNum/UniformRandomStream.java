@@ -1,8 +1,15 @@
+
 package randomNum;
 
 import java.util.Random;
 
-
+/**
+ * 
+ * En klass som randomiserar tal baserat på en uniformström. 
+ * 
+ * @author Håkan
+ *
+ */
 public class UniformRandomStream {
 
 	private Random rand;
