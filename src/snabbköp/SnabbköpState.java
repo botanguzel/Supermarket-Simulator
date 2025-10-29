@@ -3,7 +3,6 @@ package snabbköp;
 import generellSim.Event;
 import generellSim.SimState;
 import snabbköp.Time.TimeCalculations;
-import snabbköp.kunder.KundHändelse;
 
 public class SnabbköpState extends SimState{
 	
@@ -12,8 +11,6 @@ public class SnabbköpState extends SimState{
 		kassaKöLängd, summaKöTid, summaTidLedigaKassor,
 		antalMissadeKunder, maxKassor, antalKunderIButik, 
 		antalLedigaKassor, maxKunder, totalAntalKunder, kundID;
-	
-	private KassaKöFIFO kassaKöFIFO;
 	
 	private boolean snabbköpÖppet;
 	private double lambda, ankomstTid, plockTid, betalningsTid, kMin, kMax, pMin, pMax;
@@ -59,7 +56,6 @@ public class SnabbköpState extends SimState{
 	public double getPMax() { return this.pMax; }
 	public long getSeed() { return seed; }
 	public boolean isSnabbköpÖppet() { return snabbköpÖppet; }
-	public KassaKöFIFO getKassaKöFIFO() { return kassaKöFIFO; }
 	public Event getCurrentEvent() { return this.currentEvent; }
 
 	public void ökaAntalKunderSomKöat() { this.antalKunderSomKöat++; }
@@ -69,9 +65,7 @@ public class SnabbköpState extends SimState{
 	public void setSnabbköpÖppet(boolean a) { this.snabbköpÖppet = a; }
 	public void setCurrentEvent(Event e) {
 		this.currentEvent = e;
-		if (e instanceof KundHändelse) { this.setKundID(((KundHändelse) e).getKund().getKundID()); };
 	}
-	public void setKassaKöFIFO(KassaKöFIFO k) { this.kassaKöFIFO = k; }
 	
 	public void läggMissadKund() {this.antalMissadeKunder += 1; }
 	public void minskaAntalKunderIButik() { this.antalKunderIButik -= 1; }

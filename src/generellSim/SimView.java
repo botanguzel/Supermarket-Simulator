@@ -11,6 +11,7 @@ import java.util.Observer;
  * 
  * @author Botzan Güzel, Sergij Wennströmm, Ludvig Lidén
  */
+@SuppressWarnings("deprecation")
 public abstract class SimView implements Observer {
 
     /**

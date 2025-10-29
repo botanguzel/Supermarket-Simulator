@@ -16,8 +16,7 @@ public class KassaKö {
     /**
      * Skapar en tom kassakö.
      */
-    public KassaKö() {
-    }
+    public KassaKö() {}
 
     /**
      * Lägger till en kund i slutet av kön.

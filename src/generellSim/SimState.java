@@ -8,6 +8,7 @@ import java.util.Observable;
  * 
  * @author Botzan Güzel, Sergij Wennströmm, Ludvig Lidén
  */
+@SuppressWarnings("deprecation")
 public abstract class SimState extends Observable {
     
     /**
@@ -29,7 +30,6 @@ public abstract class SimState extends Observable {
     /**
      * Starts the simulation and notifying observers.
      */
-    @SuppressWarnings("deprecation")
 	public void startSimulation() {
         this.simulationRunning = true;
         this.notifyObservers();
@@ -38,7 +38,6 @@ public abstract class SimState extends Observable {
     /**
      * Stops the simulation  and notifying observers.
      */
-    @SuppressWarnings("deprecation")
 	public void stopSimulation() {
         this.simulationRunning = false;
         this.notifyObservers();

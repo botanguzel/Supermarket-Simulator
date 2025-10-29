@@ -10,6 +10,7 @@ import generellSim.SimState;
  * 
  * @author Botan Güzel, Sergij Wennströmm, Ludvig Lidén
  */
+@SuppressWarnings("deprecation")
 public class SnabbköpTillstånd extends SimState {
     private TimeCalculations tidBeräkningar;
     private int antalLedigaKassor;
